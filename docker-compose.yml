@@ -1,0 +1,127 @@
+version: '3.8'
+services:
+  # ------------------
+  # learn 001
+  # ------------------
+  next001:
+    env_file:
+      - ./environment.env
+    build:
+      context: .
+      dockerfile: ./next001/Dockerfile
+    container_name: next001
+    hostname: next001
+    volumes:
+      - ./work:/work
+      #- ./next001/next001:/usr/local/app
+      - ./next001/next001:/usr/local/app
+      - next001_node_modules:/usr/local/app/node_modules
+    working_dir: /usr/local/app
+    environment:
+      - TZ=${TZ}
+    networks:
+      - default
+    ports:
+      - "3001:3001"
+    tty: true
+    command:
+      sh -c "npm run dev"
+      # sh -c "cd next001 && npm run dev"
+
+  # ------------------
+  # learn 002
+  # ------------------
+  next002:
+    env_file:
+      - ./environment.env
+    build:
+      context: .
+      dockerfile: ./next002/Dockerfile
+    container_name: next002
+    hostname: next002
+    volumes:
+      - ./work:/work
+      - ./next002:/usr/local/app
+      - next002_node_modules:/usr/local/app/node_modules
+    working_dir: /usr/local/app
+    environment:
+      - TZ=${TZ}
+    networks:
+      - default
+    ports:
+      - "3002:3002"
+    tty: true
+    command:
+      sh -c "npm run dev"
+      # sh -c "cd next001 && npm run dev"
+
+  # ------------------
+  # learn 003
+  # ------------------
+  next003:
+    env_file:
+      - ./environment.env
+    build:
+      context: .
+      dockerfile: ./next003/Dockerfile
+    container_name: next003
+    hostname: next003
+    volumes:
+      - ./work:/work
+      - ./next003:/usr/local/app
+      - next003_node_modules:/usr/local/app/node_modules
+    working_dir: /usr/local/app
+    environment:
+      - TZ=${TZ}
+    networks:
+      - default
+    ports:
+      - "3003:3003"
+    tty: true
+    command:
+      sh -c "npm run dev"
+      # sh -c "cd next001 && npm run dev"
+
+  # ------------------
+  # learn 004
+  # ------------------
+  next004:
+    env_file:
+      - ./environment.env
+    build:
+      context: .
+      dockerfile: ./next004/Dockerfile
+    container_name: next004
+    hostname: next004
+    volumes:
+      - ./work:/work
+      - ./next004:/usr/local/app
+      - next004_node_modules:/usr/local/app/node_modules
+    working_dir: /usr/local/app
+    environment:
+      - TZ=${TZ}
+    networks:
+      - default
+    ports:
+      - "3004:3004"
+    tty: true
+    command:
+      sh -c "npm run dev"
+      # sh -c "cd next001 && npm run dev"
+
+
+#---------------------------
+# my-network
+#---------------------------
+networks:
+  default:
+    name: my-net
+
+#---------------------------
+# Volumes
+#---------------------------
+volumes:
+  next001_node_modules:
+  next002_node_modules:
+  next003_node_modules:
+  next004_node_modules:
