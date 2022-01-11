@@ -109,6 +109,33 @@ services:
       sh -c "npm run dev"
       # sh -c "cd next001 && npm run dev"
 
+  # ------------------
+  # learn 005
+  # ------------------
+  next005:
+    env_file:
+      - ./environment.env
+    build:
+      context: .
+      # dockerfile: ./next005/Dockerfile
+      dockerfile: ./Dockerfile_005
+    container_name: next005
+    hostname: next005
+    volumes:
+      - ./work:/work
+      - ./next005:/usr/local/app
+      - next005_node_modules:/usr/local/app/node_modules
+    working_dir: /usr/local/app
+    environment:
+      - TZ=${TZ}
+    networks:
+      - default
+    ports:
+      - "3005:3005"
+    tty: true
+    command:
+      sh -c "npm run dev"
+      # sh -c "cd next001 && npm run dev"
 
 #---------------------------
 # my-network
@@ -125,3 +152,4 @@ volumes:
   next002_node_modules:
   next003_node_modules:
   next004_node_modules:
+  next005_node_modules:
