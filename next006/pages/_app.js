@@ -1,6 +1,7 @@
+/**
+ * @see https://stackoverflow.com/questions/63434733/getting-props-as-undefined-in-component-returned-from-getstaticprops
+ */
 import '../styles/globals.css'
-
-
 
 
 function MyApp({ Component, pageProps }) {
