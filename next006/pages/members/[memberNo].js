@@ -1,9 +1,17 @@
-import {Profile} from "../../components/pages/Profile";
+import { useRouter } from "next/router";
+import { Profile } from "../../components/pages/Profile";
 
-export default function () {
+
+const Member = () => {
+
+    const router = useRouter();
+    const {memberNo} = router.query;
+
     return (
         <>
-        <Profile />
+        <Profile memberNo={memberNo} />
         </>
     );
 }
+
+export default Member;
