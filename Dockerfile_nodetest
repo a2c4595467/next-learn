@@ -1,0 +1,10 @@
+FROM node:lts
+WORKDIR /usr/local/app
+
+ENV NODE_ENV=$NODE_ENV
+
+# COPY ["./nextadminbe/package*.json", "/usr/local/app/"]
+# RUN npm install && npm cache verify --force
+
+#RUN npm install -g nodemon
+#CMD ["sh"]

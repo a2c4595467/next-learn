@@ -163,6 +163,33 @@ services:
     command:
       sh -c "npm run dev"
 
+  # ------------------
+  # node test
+  # ------------------
+  nodetest:
+    env_file:
+      - ./environment.env
+    build:
+      context: .
+      dockerfile: ./Dockerfile_nodetest
+    container_name: nodetest
+    hostname: nodetest
+    volumes:
+      - ./work:/work
+      - ./nodetest:/usr/local/app
+      # - nodetest_node_modules:/usr/local/app/node_modules
+    working_dir: /usr/local/app
+    environment:
+      - TZ=${TZ}
+    networks:
+      - default
+    ports:
+      - "3007:3007"
+    tty: true
+    # command:
+    #   sh -c "npm run dev"
+
+
 #---------------------------
 # my-network
 #---------------------------
@@ -180,3 +207,4 @@ volumes:
   next004_node_modules:
   next005_node_modules:
   next006_node_modules:
+  # nodetest_node_modules:
