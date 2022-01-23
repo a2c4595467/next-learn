@@ -189,6 +189,31 @@ services:
     # command:
     #   sh -c "npm run dev"
 
+  # ------------------
+  # node api test
+  # ------------------
+  nodeapitest:
+    env_file:
+      - ./environment.env
+    build:
+      context: ./nodeapitest
+      dockerfile: ../Dockerfile_nodeapitest
+    container_name: nodeapitest
+    hostname: nodeapitest
+    volumes:
+      - ./work:/work
+      - ./nodetest:/usr/local/app
+    working_dir: /usr/local/app
+    environment:
+      - TZ=${TZ}
+    networks:
+      - default
+    ports:
+      - "3008:3008"
+    tty: true
+    command:
+      sh -c "npm run start"
+
 
 #---------------------------
 # my-network
